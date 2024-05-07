@@ -1,0 +1,63 @@
+.header-container{
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    width: 100%;
+}
+  .app {
+      font-family: sans-serif;
+      font-size: 18px;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      flex-direction: column;
+      height: 90vh;
+      max-height: 90vh;
+      width: 25%;
+      max-width: 25%;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      
+    }
+    .checkList{
+      width: 100%;
+      min-width: 100%;
+      overflow-y: scroll;
+    }
+    .title {
+      font-size: 22px;
+      margin-bottom: 10px;
+      width: 30%;
+      min-width: 30%;
+      justify-self: center;
+      align-self: center;
+    }
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-left: 20px;
+    }
+    .checked-item,
+    .not-checked-item {
+      margin-left: 10px;
+    }
+    .checked-item {
+      text-decoration: line-through;
+    }
+  
+    .filter-button{
+        padding: 0 12px;
+        height: 32px;
+        text-align: center;
+        margin: auto 4px;
+        color: rgba(255, 255, 255, 0.87);
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        letter-spacing: 0.01071em;
+        border-radius: 16px;
+        line-height: 1.43;
+        font-size: 13px;
+        min-width: 30%;
+        width: 30%;
+    }

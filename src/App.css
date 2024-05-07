@@ -1,0 +1,15 @@
+.container{
+  display: flex;
+
+}
+.header{
+  display: flex;
+  border: rebeccapurple 1px solid;
+  width: 100%;
+  min-width: 100%;
+}
+.title{
+  border: rebeccapurple 1px solid;
+  width: 70vw;
+  min-width: 70vw;
+}
