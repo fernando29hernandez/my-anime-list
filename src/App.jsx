@@ -16,7 +16,7 @@ function App() {
 	const [selectedGenres, setSelectedGenres] = useState("");
 
 
-	const GetTopAnime = useCallback( async (currentPage) => {
+	const GetTopAnime =  async (currentPage) => {
 		if (search === '') {
 			console.log(currentPage)
 			const temp = await fetch(`https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=` + currentPage)
@@ -27,7 +27,7 @@ function App() {
 			return
 		}
 		FetchAnime(search, currentPage)
-	},[])
+	}
 
 	const handleSearch =(query) => {
 
