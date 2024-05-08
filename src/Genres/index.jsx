@@ -17,8 +17,11 @@ function Genres({genres,setGenres,applyFilters}) {
 	};
 	  
   
-    const removeFilters = ()=>{
+    const removeFilters = async ()=>{
         setGenres(genres.map(genre=> ({ ...genre, checked: false })))
+        setTimeout(()=>{
+            applyFilters()
+        },2000)  
     }
 	return (
         <div className="app">

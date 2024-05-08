@@ -5,8 +5,7 @@
     align-self: end;
     align-items: end;
     align-content: end;
-    border: rebeccapurple 1px solid;
-    width: 30%;
+    width: 65%;
     .search-box {
         display: flex;
         justify-content: flex-end;
@@ -20,7 +19,7 @@
 
             display: block;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             padding: 16px;
             border-radius: 999px;
             background-color: #EEE;

@@ -5,9 +5,7 @@ function SearchBar(props) {
 	return (
 
 			<div className="main-head">
-				<div 
-					className="search-box"
-					>
+				<div className="search-box">
 					<input 
 						type="search"
 						placeholder="Search for an anime..."
