@@ -9,9 +9,9 @@ const List = ({ animes, totalPages, page, setPage, getData }) => {
     return (
         <div className="anime-list-container" >
             <div className="anime-list" style={{ "color": "#fffff" }}>
-                {animes.map((item) => {
+                {animes.map((item,index) => {
                     return (
-                        <Anime key={item.mal_id} anime={item} />
+                        <Anime key={item.mal_id+"anime"+index} anime={item} />
                     )
                 })}
             </div>
