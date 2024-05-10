@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react'
+import './App.scss'
 import List from './List'
 import SearchBar from './SearchBar'
 import Genres from './Genres';
@@ -18,29 +18,23 @@ function App() {
 
 	const GetTopAnime =  async (currentPage) => {
 		if (generateGenreString()==''&&search === '') {
-			console.log(currentPage)
+
 			const temp = await fetch(`https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=` + currentPage)
 				.then(res => res.json());
-			console.log(temp)
-			setTotalPages(temp.pagination.last_visible_page)
+			setTotalPages(temp.pagination.items.total)
 			setAnimeList(temp.data);
 			return
 		}
-		FetchAnime(search, currentPage,generateGenreString())
+		fetchAnime(search, currentPage,generateGenreString())
 	}
 
 	const handleSearch =(query) => {
-
-			console.log("HOLA",generateGenreString())
-			console.log("HOLA",query)
-			FetchAnime(query,1,generateGenreString());    
+			fetchAnime(query,1,generateGenreString());    
 		
 	}
 
-	const FetchAnime =  async (query, currentPage,genreString) => {
+	const fetchAnime =  async (query, currentPage,genreString) => {
 		let selectedPage = page;
-		console.log(`https://api.jikan.moe/v4/anime?`+(query!=''?`q=${query}&`:'')+`order_by=title&sort=asc&limit=10&sfw=true&page=${selectedPage}`+(genreString!=''?`&genres=${genreString}`:''))
-	    console.log(!query.trim()&&!genreString.trim())
 		if (!query.trim()&&!genreString.trim()) {
 			GetTopAnime(page)
 			return
@@ -52,11 +46,10 @@ function App() {
 		if (currentPage !== undefined) {
 			selectedPage = currentPage
 		}
-		console.log(`https://api.jikan.moe/v4/anime?`+(query!=''?`q=${query}&`:'')+`order_by=title&sort=asc&limit=10&sfw=true&page=${selectedPage}`+((genreString!=''&&genreString!=undefined)?`&genres=${genreString}`:''))
 		const temp = await fetch(`https://api.jikan.moe/v4/anime?`+(query!=''?`q=${query}&`:'')+`order_by=title&sort=asc&limit=10&sfw=true&page=${selectedPage}`+(genreString!=''&&genreString!=undefined?`&genres=${genreString}`:''))
 			.then(res => res.json());
 		setAnimeList(temp.data);
-		setTotalPages(temp.pagination.last_visible_page)
+		setTotalPages(temp.pagination.items.total)
 	}
 
 	useEffect(() => {
@@ -68,20 +61,19 @@ function App() {
 
 		const temp = await fetch(`https://api.jikan.moe/v4/genres/anime?filter=genres`)
 			.then(res => res.json());
-			
 			let tempGenres = temp.data?.map(tempGenre => ({ ...tempGenre, checked: false }))
-			console.log(temp.data)
 			setGenres(tempGenres)
 	}
 
 	const generateGenreString = ()=>{
 		let temp = genres.filter(tempGenre => tempGenre?.checked).map(tempGenre=>tempGenre?.mal_id).toString()
-		console.log("filtrado",temp)
 		return temp
 	}
 	const applyFilters = () =>{
+		setPage(1)
 		setSelectedGenres(generateGenreString())
-		FetchAnime(search,1,generateGenreString())
+		fetchAnime(search,1,generateGenreString())
+
 	}
 	return (
 		<>

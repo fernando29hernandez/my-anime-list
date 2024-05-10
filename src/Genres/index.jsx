@@ -24,7 +24,7 @@ function Genres({genres,setGenres,applyFilters}) {
         },2000)  
     }
 	return (
-        <div className="app">
+        <div className="app-genre">
             
             <div className='header-container'>
                 <div className="title">Genres:</div>
@@ -35,16 +35,16 @@ function Genres({genres,setGenres,applyFilters}) {
                     Apply Filters
                 </button>
             </div>
-            <div className="checkList">
+            
                 <div className="list-container">
                     {genres!=undefined && genres.length > 0 ? genres.map((item, index) => (
-                        <label key={index}>
+                        <label className="checkList" key={index}>
                             <input checked={item.checked} type="checkbox" onChange={()=>handleCheck(index)} />
                             <span className={item.checked? "checked-item" : "not-checked-item"}>{item.name}</span>
                         </label>
                     )) : <></>}
                 </div>
-            </div>
+            
         </div>
 
 	)

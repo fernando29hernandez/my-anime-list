@@ -1,0 +1,23 @@
+$small: 300px;
+$medium: 900px;
+
+@media screen and (min-width: $small) and (max-width: $medium) {
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.container{
+  display: flex;
+}
+.header{
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+}
+.title{
+  width: 70vw;
+  min-width: 70vw;
+  font-size: 24px;
+}

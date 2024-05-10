@@ -11,7 +11,6 @@ function SearchBar(props) {
 						placeholder="Search for an anime..."
 						value={props.search}
 						onChange={e => props.SetSearch(e.target.value)} onKeyDown={(e)=>{
-							console.log(e.code)
 							if(e.code === 'Enter') {
 								props.SetSearch(e.target.value)
 								props.handleSearch(e.target.value)

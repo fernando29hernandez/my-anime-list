@@ -4,7 +4,6 @@ import './styles.scss'
 import { DOTS, usePagination } from '../../Hooks/usePagination'
 
 const Pagination = ({ totalPages, page,setPage,getData }) => {
-
     const paginationRange = usePagination({
         currentPage:page,
         totalCount:totalPages,
@@ -14,7 +13,7 @@ const Pagination = ({ totalPages, page,setPage,getData }) => {
 
 
     const nextPage = () => {
-            if(page !== totalPages){
+            if((totalPages/10)>page){
                 setPage(prev=>prev+1); 
                 getData(page + 1);
             } 
@@ -29,7 +28,7 @@ const Pagination = ({ totalPages, page,setPage,getData }) => {
         <nav>
             <ul className='pagination-container justify-content-center'>
                 <li >
-                    <button className="pagination-item page-link" 
+                    <button className="pagination-item page-link previous" 
                         onClick={prevPage} 
                        >
                         
@@ -51,7 +50,7 @@ const Pagination = ({ totalPages, page,setPage,getData }) => {
                       );
                 })}
                 <li >
-                    <button className="pagination-item page-link" 
+                    <button className="pagination-item page-link next" 
                         onClick={nextPage}
                         >
                         

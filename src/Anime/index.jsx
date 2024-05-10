@@ -36,8 +36,32 @@ const Anime = ({ anime }) => {
                 <article className="anime-card-back">
 
                     <h3>{anime.title}</h3>
+                    <div className='property'>
+                        <b>Episodes:</b> {anime?.episodes}
+                    </div>
+                    <div className='property'>
+                    <b> Status:</b>  {anime?.status}
+                    </div>
+                    <div className='property'>
+                    <b>   Duration:</b>  {anime?.duration}
+                    </div>
+                    <div className='property'>
+                    <b>   Studio:</b>  {anime?.studios[0]?.name}
+                    </div>
+                    <div className='property'>
+                    <b>  Demography:</b>  {anime?.demographics[0]?.name}
+                    </div>
+                    <div className='property'>
+                    <b>  Rating:</b>  {anime?.rating}
+                    </div>
+                    <div className='property'>
+                    <b>  Score:</b>  {anime?.score}
+                    </div>
+                    <div className='property'>
+                    <b>  Trailer:</b> <a href={anime?.trailer?.url}>{anime?.trailer?.url}</a> 
+                    </div>
                     <div className='synopsis'>
-                        {anime.synopsis}
+                        {anime?.synopsis}
                     </div>
                 </article>
             </div>

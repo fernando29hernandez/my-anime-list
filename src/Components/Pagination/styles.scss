@@ -1,3 +1,52 @@
+$small: 300px;
+$medium: 900px;
+
+@media screen and (min-width: $small) and (max-width: $medium) {
+  .pagination-container{
+    display: flex;
+    list-style-type: none;
+    max-width: 100%;
+    justify-content: center;
+  }
+  .page-link{
+      
+    color:rgba(255, 255, 255, 0.87) ;
+  }
+  .pagination-item {
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    margin: auto 2px;
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    font-size: 10px;
+    min-width: 24px;
+    max-width: 24px;
+   
+  }
+  .previous {
+    text-indent: -9999px;
+}
+
+  .previous::after{
+    text-indent: 0;
+    content:"<";
+  }
+  .next {
+    text-indent: -9999px;
+}
+  .next::after{
+    text-indent: 0;
+    content:">";
+  }
+}
+
+
 .pagination-container {
     display: flex;
     list-style-type: none;
