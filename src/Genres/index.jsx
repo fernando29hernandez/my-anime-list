@@ -42,7 +42,7 @@ function Genres({genres,setGenres,applyFilters}) {
                             <input checked={item.checked} type="checkbox" onChange={()=>handleCheck(index)} />
                             <span className={item.checked? "checked-item" : "not-checked-item"}>{item.name}</span>
                         </label>
-                    )) : <></>}
+                    )) : <>Too many requests per minute, try later</>}
                 </div>
             
         </div>

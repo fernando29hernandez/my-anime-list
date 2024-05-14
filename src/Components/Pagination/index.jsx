@@ -3,17 +3,17 @@ import React from 'react'
 import './styles.scss'
 import { DOTS, usePagination } from '../../Hooks/usePagination'
 
-const Pagination = ({ totalPages, page,setPage,getData }) => {
+const Pagination = ({ totalItems, page,setPage,getData }) => {
     const paginationRange = usePagination({
         currentPage:page,
-        totalCount:totalPages,
+        totalCount:totalItems,
         siblingCount:1,
         pageSize:10
       })
 
 
     const nextPage = () => {
-            if((totalPages/10)>page){
+            if((totalItems/10)>page){
                 setPage(prev=>prev+1); 
                 getData(page + 1);
             } 
@@ -35,7 +35,7 @@ const Pagination = ({ totalPages, page,setPage,getData }) => {
                         Previous
                     </button>
                 </li>
-                {paginationRange.map((pageNumber,index) => {
+                {paginationRange!=undefined?paginationRange.map((pageNumber,index) => {
                     
                     if (pageNumber === DOTS) {
                         return <li key={index+pageNumber+index}className="pagination-item dots">&#8230;</li>;
@@ -48,7 +48,7 @@ const Pagination = ({ totalPages, page,setPage,getData }) => {
                           {pageNumber}
                         </li>
                       );
-                })}
+                }):<></>}
                 <li >
                     <button className="pagination-item page-link next" 
                         onClick={nextPage}

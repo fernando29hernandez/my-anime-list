@@ -1,3 +1,19 @@
+$small: 300px;
+$medium: 900px;
+
+@media screen and (min-width: $small) and (max-width: $medium) {
+    .main-head {
+        display: flex;
+        justify-content: flex-end;
+        justify-self:end;
+        align-self: end;
+        align-items: end;
+        align-content: end;
+        width: 60%;
+        min-width: 60%;
+        margin-left: 20px;
+    }
+}
 .main-head {
     display: flex;
     justify-content: flex-end;

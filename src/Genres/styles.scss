@@ -26,6 +26,7 @@ $medium: 900px;
       overflow-y: auto;
   
       gap: 10px;
+      margin-top: 20px;
       .checkList{
         flex: 1 0 auto;
       }
@@ -36,6 +37,7 @@ $medium: 900px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      flex: 1;
       height: 30%;
       width: 100%;
       min-width: 100%;
@@ -72,12 +74,7 @@ $medium: 900px;
 }
 
 
-.header-container{
-  display: flex;
-  flex-direction: row;
-  height: 10%;
-  width: 100%;
-}
+
 .app-genre {
     font-family: sans-serif;
     font-size: 18px;
@@ -88,6 +85,39 @@ $medium: 900px;
     width: 25%;
     max-width: 25%;
     margin-left: 10px;
+    .header-container{
+      display: flex;
+      flex-direction: row;
+
+      height: 10%;
+      min-height: 10%;
+      width: 100%;
+      max-width: 100%;
+      .title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        width: 30%;
+        min-width: 30%;
+        justify-self: center;
+        align-self: center;
+      }
+      .filter-button{
+        padding: 0 12px;
+        height: 32px;
+        text-align: center;
+        margin: auto 4px;
+        color: rgba(255, 255, 255, 0.87);
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        letter-spacing: 0.01071em;
+        border-radius: 16px;
+        line-height: 1.43;
+        font-size: 13px;
+        min-width: 30%;
+        width: 30%;
+      }
+    }
     .list-container {
       display: flex;
       flex-direction: column;
@@ -106,14 +136,7 @@ $medium: 900px;
     }
   }
   
-  .title {
-    font-size: 22px;
-    margin-bottom: 10px;
-    width: 30%;
-    min-width: 30%;
-    justify-self: center;
-    align-self: center;
-  }
+ 
   
   .checked-item,
   .not-checked-item {
@@ -123,19 +146,3 @@ $medium: 900px;
     text-decoration: line-through;
   }
 
-  .filter-button{
-      padding: 0 12px;
-      height: 32px;
-      text-align: center;
-      margin: auto 4px;
-      color: rgba(255, 255, 255, 0.87);
-      display: flex;
-      box-sizing: border-box;
-      align-items: center;
-      letter-spacing: 0.01071em;
-      border-radius: 16px;
-      line-height: 1.43;
-      font-size: 13px;
-      min-width: 30%;
-      width: 30%;
-  }
