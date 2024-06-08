@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-
-import './styles.scss'
-import BackArrow from './BackArrow';
 import { Hourglass } from 'react-loader-spinner';
 
-const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
+import BackArrow from './BackArrow';
+import { URL_ANIME_API } from '../../Constants';
 
-    const URL_ANIME_API = `https://api.jikan.moe/v4/`
+import './styles.scss'
 
-    const [characters,setCharacters] = useState([])
+const AnimeInfo = ({ anime, setIsAnimeSelected }) => {
 
-    const [episodes,setEpisodes] = useState([])
+    const [characters, setCharacters] = useState([])
+    const [episodes, setEpisodes] = useState([])
+
     const handleFlip = () => {
         setIsAnimeSelected(false)
     }
@@ -19,14 +19,14 @@ const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
 
         const temp = await fetch(`${URL_ANIME_API}anime/${anime?.mal_id}/characters`)
             .then(res => res.json());
-            setCharacters(temp.data)
+        setCharacters(temp.data)
     }
 
     const getEpisodes = async () => {
 
         const temp = await fetch(`${URL_ANIME_API}anime/${anime?.mal_id}/episodes`)
             .then(res => res.json());
-            setEpisodes(temp.data)
+        setEpisodes(temp.data)
 
 
     }
@@ -39,12 +39,12 @@ const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
 
     return (
 
-      
+
         <div className='anime-container' >
             <div className='button-container'>
-                        <button className='info-button' onClick={handleFlip}>
-                           <BackArrow /> <div className="icon-style">Back</div>
-                        </button>
+                <button className='info-button' onClick={handleFlip}>
+                    <BackArrow /> <div className="icon-style">Back</div>
+                </button>
 
             </div>
             <h3 className='anime-title'>{anime.title}</h3>
@@ -84,12 +84,12 @@ const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
                     <div className='property'>
                         <b>  Type:</b>  {anime?.type}
                     </div>
-        {/**
+                    {/**
          * <div className='property'>
                         <b>  Trailer:</b> <a href={anime?.trailer?.url}>{anime?.trailer?.url}</a>
                     </div>
          */}
-                    
+
                 </div>
                 <div className='info-area'>
 
@@ -109,24 +109,24 @@ const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
                     </div>
 
                     <div className='character-title'>
-                        <b>Trailer:</b> 
+                        <b>Trailer:</b>
                     </div>
 
                     <div className="episode-list">
                         <iframe
-                        width="853"
-                        height="480"
-                        src={anime?.trailer?.embed_url}
-                        frameBorder="0"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        title="Embedded youtube"
+                            width="853"
+                            height="480"
+                            src={anime?.trailer?.embed_url}
+                            frameBorder="0"
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title="Embedded youtube"
                         />
                     </div>
                     <div className='character-title'>
-                        <b>Character and Voice Actors:</b> 
+                        <b>Character and Voice Actors:</b>
                     </div>
-                    
+
                     <div className='character-list'>
 
                         {characters?.length > 0 ?
@@ -196,7 +196,7 @@ const AnimeInfo = ({ anime,setIsAnimeSelected }) => {
                     </div>
 
                     <div className='character-title'>
-                        <b>List of Episodes:</b> 
+                        <b>List of Episodes:</b>
                     </div>
 
                     <div className='episode-list'>

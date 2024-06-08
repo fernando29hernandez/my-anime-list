@@ -4,28 +4,16 @@ import { DNA,Hourglass } from 'react-loader-spinner'
 import Genres from './Genres'
 import List from './List'
 import SearchBar from './SearchBar'
+import { URL_ANIME_API } from '../../Constants'
 
 import './styles.scss'
 
-
-function AnimeList({setSelectedAnime,setIsAnimeSelected}) {
-
-	const [animeList, setAnimeList] = useState([]);
-
-	const [page, setPage] = useState(1);
-	const [totalItems, setTotalItems] = useState(0)
+function AnimeList({setSelectedAnime,setIsAnimeSelected,animeList, setAnimeList,page, setPage,totalItems, setTotalItems,search, SetSearch,genres, setGenres,selectedGenres, setSelectedGenres}) {
 
 	const [loading, setLoading] = useState(false)
 
 	const [loadingGenres, setLoadingGenres] = useState(false)
 
-	const [search, SetSearch] = useState("");
-	const [genres, setGenres] = useState([]);
-
-	// State with list of all checked item
-	const [selectedGenres, setSelectedGenres] = useState("");
-
-    const URL_ANIME_API = `https://api.jikan.moe/v4/`
 	const GetTopAnime =  useCallback(async (currentPage) => {
 		setLoading(true)
 		if (generateGenreString()==''&&search === '') {
