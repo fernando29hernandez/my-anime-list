@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Anime from '../../../Anime';
+import Anime from './../Anime';
 
 import './styles.scss'
 import Pagination from '../../../Components/Pagination';

@@ -45,7 +45,7 @@ const Anime = ({ anime,setSelectedAnime,
                         <button className='info-button' onClick={handleFlip}>
                             Quick View
                         </button>
-                        <button className='more-info-button' onClick={()=>ShowAnimeInfo()}>
+                        <button className='more-info-button' onClick={ShowAnimeInfo}>
                             Complete info.
                         </button>
                     </div>
