@@ -13,6 +13,7 @@ $medium: 900px;
         perspective: 1000px;
         /* Remove this if you don't want the 3D effect */
     }
+
     .anime-card-back {
         transform: rotateY(180deg);
         flex: 1;
@@ -50,6 +51,10 @@ $medium: 900px;
     transform-style: preserve-3d;
 }
 
+$primary: #FF0072;
+$second: #644cad;
+$third: #4426a8;
+
 .anime-card {
     flex: 1;
     width: 100%;
@@ -63,12 +68,88 @@ $medium: 900px;
     flex-direction: column;
     position: relative;
 
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        gap: 10px;
+        height: 40px !important;
+
+        .info-button {
+            width: 45%;
+            padding: 5px;
+            border-radius: 10px;
+            height: 35px;
+            border-radius: 0.6em;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            background: linear-gradient(90deg, rgba(88, 88, 101, 1) 19%, rgba(80, 80, 94, 1) 41%, rgba(23, 23, 29, 1) 81%);
+            -webkit-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+        }
+
+        .info-button:hover {
+            //border: rgb(88, 88, 101) 2px solid;
+            background: linear-gradient(90deg, rgba(80, 80, 94, 1) 19% , rgb(65, 65, 73) 41%,rgba(23, 23, 29, 1) 81%);;
+            color: white;
+        }
+
+        .info-button:hover,
+        .info-button:focus {
+            outline: 0;
+        }
+
+        .more-info-button {
+            width: 45%;
+            padding: 5px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: white;
+            border: 2px solid rgb(88, 88, 101);
+            border-radius: 0.6em;
+            color: rgb(88, 88, 101);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+
+            -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+        }
+
+        .more-info-button:hover {
+            //box-shadow: 0 0 40px 40px  rgb(88,88,101) inset;
+            background: rgb(88, 88, 101);
+            background: linear-gradient(90deg, white 19%, white, white 81%);
+            color: rgb(88, 88, 101);
+        }
+
+        .more-info-button:hover,
+        .more-info-button:focus {
+            color: rgb(88, 88, 101);
+            outline: 0;
+        }
+
+    }
+
     .synopsis {
         color: rgb(83, 83, 83);
         margin: 2px 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 30px;
+
     }
 
     .rank {
@@ -89,21 +170,22 @@ $medium: 900px;
         min-width: 100%;
         height: 350px;
         margin: 0px;
-        
+
 
         img {
-            
+
             width: 100%;
             min-width: 100%;
             height: 100%;
             max-height: 100%;
             object-fit: cover;
             border-radius: 25px 25px 0px 0px;
-            clip-path: polygon(0 0,100% 0, 100% 90%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
-        
+
     }
-    figure::after{
+
+    figure::after {
         content: "";
         position: absolute;
         top: 0;
@@ -112,8 +194,9 @@ $medium: 900px;
         height: 350px;
         border-radius: 25px 25px 0px 0px;
         background: linear-gradient(to right, #a9b4bb34, #00030354);
-        clip-path: polygon(0 0,100% 0, 100% 90%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     }
+
     h3 {
         color: #575757;
         margin: 10px 10px;
@@ -152,6 +235,83 @@ $medium: 900px;
     flex-direction: column;
     position: relative;
 
+    .button-container {
+        width: 100%;
+        position: absolute;
+        bottom: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        gap: 10px;
+        height: 40px !important;
+
+        .info-button {
+            width: 60%;
+            padding: 5px;
+            border-radius: 10px;
+            height: 35px;
+            border-radius: 0.6em;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+            
+            font-weight: bold;
+            background: linear-gradient(90deg, rgba(88, 88, 101, 1) 19%, rgba(80, 80, 94, 1) 41%, rgba(23, 23, 29, 1) 81%);
+            -webkit-transition: all 150ms ease-in-out;
+            transition: all 150ms ease-in-out;
+        }
+
+        .info-button:hover {
+            border: rgb(88, 88, 101) 2px solid;
+            background: white;
+            color: rgb(88, 88, 101);
+        }
+
+        .info-button:hover,
+        .info-button:focus {
+            outline: 0;
+        }
+
+        .more-info-button {
+            width: 65%;
+            padding: 5px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid rgb(88, 88, 101);
+            border-radius: 0.6em;
+            color: rgb(88, 88, 101);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+        
+            font-weight: bold;
+
+            -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+        }
+
+        .more-info-button:hover {
+            //box-shadow: 0 0 40px 40px  rgb(88,88,101) inset;
+            background: rgb(88, 88, 101);
+            background: linear-gradient(90deg, rgba(88, 88, 101, 1) 19%, rgba(80, 80, 94, 1) 41%, rgba(23, 23, 29, 1) 81%);
+
+        }
+
+        .more-info-button:hover,
+        .more-info-button:focus {
+            color: #fff;
+            outline: 0;
+        }
+
+    }
     .synopsis {
         color: rgb(83, 83, 83);
         margin: 2px 10px;
@@ -160,12 +320,13 @@ $medium: 900px;
         font-size: 16px;
 
     }
-    .property{
+
+    .property {
         color: rgb(83, 83, 83);
         margin: 2px 10px;
         /* These are technically the same, but use both */
         overflow-wrap: break-word;
-        word-wrap: break-word!important;
+        word-wrap: break-word !important;
 
         -ms-word-break: break-all;
         /* This is the dangerous one in WebKit, as it breaks things wherever */

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 import './styles.scss'
 
-const Anime = ({ anime }) => {
+const Anime = ({ anime,setSelectedAnime,
+    setIsAnimeSelected }) => {
 
     const [flipCard, setFlipCard] = useState(false);
 
@@ -10,8 +11,13 @@ const Anime = ({ anime }) => {
         setFlipCard(!flipCard)
     }
 
+    const ShowAnimeInfo = ()=>{
+        setSelectedAnime(anime)
+        setIsAnimeSelected(true)
+    }
+
     return (
-        <div className='flip-anime-card' onClick={handleFlip}>
+        <div className='flip-anime-card' >
             <div className={`anime-card-inner ${flipCard ? 'anime-card-inner-flip' : ''}`}>
                 <article className="anime-card">
                     <div
@@ -29,9 +35,21 @@ const Anime = ({ anime }) => {
                     <div className='synopsis'>
                         {anime.synopsis}...
                     </div>
-                    <div className='rank'>
+                    {/**
+                     *  <div className='rank'>
                         Rank: {anime.rank}
                     </div>
+                     */}
+                   
+                    <div className='button-container'>
+                        <button className='info-button' onClick={handleFlip}>
+                            Quick View
+                        </button>
+                        <button className='more-info-button' onClick={()=>ShowAnimeInfo()}>
+                            Complete info.
+                        </button>
+                    </div>
+                    
                 </article>
                 <article className="anime-card-back">
 
@@ -60,10 +78,15 @@ const Anime = ({ anime }) => {
                     <div className='property'>
                     <b>  Trailer:</b> <a href={anime?.trailer?.url}>{anime?.trailer?.url}</a> 
                     </div>
-                    <div className='synopsis'>
-                        {anime?.synopsis}
+                    <div className='button-container'>
+                        <button className='info-button' onClick={handleFlip}>
+                            Back
+                        </button>
+                       
                     </div>
+                    
                 </article>
+               
             </div>
         </div>
     )

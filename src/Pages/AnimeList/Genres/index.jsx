@@ -27,7 +27,7 @@ function Genres({genres,setGenres,applyFilters}) {
         <div className="app-genre">
             
             <div className='header-container'>
-                <div className="title">Genres:</div>
+                <div className="title-genre">Genres:</div>
                 <button className='filter-button' onClick={removeFilters}>
                     Remove Filters 
                 </button>
