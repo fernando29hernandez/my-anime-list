@@ -108,13 +108,16 @@ $medium: 900px;
                 flex-direction: row;
                 margin: 1em 0em 2em 0em;
                 .rank{
-                    width: 10%;
+                    width: 25%;
+                    min-width: 25%;
                 }
                 .score{
-                    width: 10%;
+                    width: 25%;
+                    min-width: 25%;
                 }
                 .popularity{
-                    width: 10%;
+                    width: 25%;
+                    min-width: 25%;
                 }
             }
             .synopsis {
