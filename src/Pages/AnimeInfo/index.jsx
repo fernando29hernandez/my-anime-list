@@ -11,24 +11,37 @@ const AnimeInfo = ({ anime, setIsAnimeSelected }) => {
     const [characters, setCharacters] = useState([])
     const [episodes, setEpisodes] = useState([])
 
+    const [loadingCharacters, setLoadingCharacters] = useState(false)
+    const [loadingEpisodes, setLoadingEpisodes] = useState(false)
+
     const handleFlip = () => {
         setIsAnimeSelected(false)
     }
 
     const getCharacters = async () => {
-
+        setLoadingCharacters(true)
         const temp = await fetch(`${URL_ANIME_API}anime/${anime?.mal_id}/characters`)
             .then(res => res.json());
+        if (temp?.status == 429 || temp?.status == 500) {
+            setLoadingCharacters(false)
+            return
+        }
         setCharacters(temp.data)
+        setLoadingCharacters(false)
     }
 
     const getEpisodes = async () => {
-
+        setLoadingEpisodes(true)
         const temp = await fetch(`${URL_ANIME_API}anime/${anime?.mal_id}/episodes`)
             .then(res => res.json());
+
+
+        if (temp?.status == 429 || temp?.status == 500) {
+            setLoadingEpisodes(false)
+            return
+        }
         setEpisodes(temp.data)
-
-
+        setLoadingEpisodes(false)
     }
 
     useEffect(() => {
@@ -129,69 +142,75 @@ const AnimeInfo = ({ anime, setIsAnimeSelected }) => {
 
                     <div className='character-list'>
 
-                        {characters?.length > 0 ?
-                            characters.map((item, index) => {
-                                return <div key={index} className='character-item'>
-                                    <div className='character-info'>
-                                        <div
-                                            href={''}
-                                            target="_blank"
-                                            rel="noreferrer">
-                                            <figure className='character-figure'>
-                                                <img className='character-img'
-                                                    src={item?.character?.images.jpg.image_url}
-                                                    alt="Anime Image" />
-                                            </figure>
+                        {
 
-                                        </div>
-                                        <div className='character-name'>
-                                            {item?.character?.name}
-                                        </div>
-                                        <div className='additional-character-name-info'>
-                                            {item?.role}
-                                        </div>
-                                    </div>
-                                    {item?.voice_actors[0] ?
-                                        <div className='character-voice-info'>
+                            !loadingCharacters ? characters?.length > 0 ?
+                                characters.map((item, index) => {
+                                    return <div key={index} className='character-item'>
+                                        <div className='character-info'>
                                             <div
                                                 href={''}
                                                 target="_blank"
                                                 rel="noreferrer">
                                                 <figure className='character-figure'>
                                                     <img className='character-img'
-                                                        src={item?.voice_actors[0]?.person?.images.jpg.image_url}
+                                                        src={item?.character?.images.jpg.image_url}
                                                         alt="Anime Image" />
                                                 </figure>
 
                                             </div>
                                             <div className='character-name'>
-                                                {item?.voice_actors[0]?.person?.name}
+                                                {item?.character?.name}
                                             </div>
                                             <div className='additional-character-name-info'>
-                                                {item?.voice_actors[0]?.language}
+                                                {item?.role}
+                                            </div>
+                                        </div>
+                                        {item?.voice_actors[0] ?
+                                            <div className='character-voice-info'>
+                                                <div
+                                                    href={''}
+                                                    target="_blank"
+                                                    rel="noreferrer">
+                                                    <figure className='character-figure'>
+                                                        <img className='character-img'
+                                                            src={item?.voice_actors[0]?.person?.images.jpg.image_url}
+                                                            alt="Anime Image" />
+                                                    </figure>
+
+                                                </div>
+                                                <div className='character-name'>
+                                                    {item?.voice_actors[0]?.person?.name}
+                                                </div>
+                                                <div className='additional-character-name-info'>
+                                                    {item?.voice_actors[0]?.language}
+                                                </div>
+
+                                            </div>
+                                            :
+                                            <div className='no-info'>
+                                                Information not available
                                             </div>
 
-                                        </div>
-                                        :
-                                        <div className='no-info'>
-                                            Information not available
-                                        </div>
+                                        }
 
-                                    }
-
+                                    </div>
+                                }) :
+                                <div className='list-loading'>
+                                    Cannot find the requested information, try later.
                                 </div>
-                            }) :
-                            <div className='list-loading'>
-                                <Hourglass
-                                    visible={true}
-                                    height="120"
-                                    width="120"
-                                    ariaLabel="hourglass-loading"
-                                    wrapperStyle={{}}
-                                    wrapperClass=""
-                                    colors={['#306cce', '#72a1ed']}
-                                />
-                            </div>
+                                :
+                                <div className='list-loading'>
+                                    <Hourglass
+                                        visible={true}
+                                        height="120"
+                                        width="120"
+                                        ariaLabel="hourglass-loading"
+                                        wrapperStyle={{}}
+                                        wrapperClass=""
+                                        colors={['#306cce', '#72a1ed']}
+                                    />
+                                </div>
                         }
                     </div>
 
@@ -201,30 +220,37 @@ const AnimeInfo = ({ anime, setIsAnimeSelected }) => {
 
                     <div className='episode-list'>
 
-                        {episodes?.length > 0 ?
-                            episodes.map((item, index) => {
-                                return <div key={index} className='episode-item'>
-                                    <div className='episode-info'>
-                                        <div className='episode-id'>
-                                            {item?.mal_id}
+                        {
+                            !loadingEpisodes ?
+                                episodes?.length > 0 ?
+                                    episodes.map((item, index) => {
+                                        return <div key={index} className='episode-item'>
+                                            <div className='episode-info'>
+                                                <div className='episode-id'>
+                                                    {item?.mal_id}
+                                                </div>
+                                                <div className='episode-name'>
+                                                    {item?.title}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='episode-name'>
-                                            {item?.title}
-                                        </div>
+                                    }) :
+                                    <div className='list-loading'>
+                                        Cannot find the requested information, try later.
                                     </div>
+                                :
+                                <div className='list-loading'>
+                                    <Hourglass
+                                        visible={true}
+                                        height="120"
+                                        width="120"
+                                        ariaLabel="hourglass-loading"
+                                        wrapperStyle={{}}
+                                        wrapperClass=""
+                                        colors={['#306cce', '#72a1ed']}
+                                    />
                                 </div>
-                            }) :
-                            <div className='list-loading'>
-                                <Hourglass
-                                    visible={true}
-                                    height="120"
-                                    width="120"
-                                    ariaLabel="hourglass-loading"
-                                    wrapperStyle={{}}
-                                    wrapperClass=""
-                                    colors={['#306cce', '#72a1ed']}
-                                />
-                            </div>
+
                         }
                     </div>
                 </div>
