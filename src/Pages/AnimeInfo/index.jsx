@@ -97,6 +97,12 @@ const AnimeInfo = ({ anime, setIsAnimeSelected }) => {
                     <div className='property'>
                         <b>  Type:</b>  {anime?.type}
                     </div>
+                    <div className='property'>
+                        <b>  Season:</b>  {anime?.season}
+                    </div>
+                    <div className='property'>
+                        <b> Year:</b>  {anime?.year}
+                    </div>
                     {/**
          * <div className='property'>
                         <b>  Trailer:</b> <a href={anime?.trailer?.url}>{anime?.trailer?.url}</a>
