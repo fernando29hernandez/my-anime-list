@@ -29,7 +29,7 @@ My Anime List is an app looks like https://myanimelist.net/ at least in the part
 
 <img src="https://github.com/fernando29hernandez/my-anime-list/blob/main/src/assets/screenshot2.PNG" width="80%">
 
-<img src="https://github.com/fernando29hernandez/my-anime-list/blob/main/src/assets/screenshot2.PNG" width="80%">
+<img src="https://github.com/fernando29hernandez/my-anime-list/blob/main/src/assets/screenshot3.PNG" width="80%">
 
 ## Technologies
 I used `html`, `sass`,  `react-loader-spinner`,  `fetch`,  `reactjs`.
